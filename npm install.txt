@@ -1,0 +1,4 @@
+npm install -g @angular/cli
+npm install --save-dev @angular-devkit/build-angular
+npm install bootstrap
+npm install font-awesome
