@@ -1,4 +1,7 @@
 npm install -g @angular/cli
 npm install --save-dev @angular-devkit/build-angular
+npm install nodemon
+
+npm install --save-dev @types/jquery
 npm install bootstrap
 npm install font-awesome
