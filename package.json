@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/FaztWeb/mean-employees.git"
+    "url": "git+https://github.com/jorgeromeroruiz/proyectodawmean.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/FaztWeb/mean-employees/issues"
+    "url": "https://github.com/jorgeromeroruiz/proyectodawmean/issues"
   },
-  "homepage": "https://github.com/FaztWeb/mean-employees#readme",
+  "homepage": "https://github.com/jorgeromeroruiz/proyectodawmean#readme",
   "dependencies": {
     "express": "^4.17.1",
     "mongoose": "^5.5.12",
