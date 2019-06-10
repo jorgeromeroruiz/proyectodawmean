@@ -2,9 +2,10 @@
   "name": "mean",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./server/index.js",
   "scripts": {
-    "dev": "nodemon server/index.js"
+    "dev": "nodemon server/index.js",
+    "start": "ng serve ./frontend"
   },
   "repository": {
     "type": "git",
@@ -18,12 +19,19 @@
   },
   "homepage": "https://github.com/jorgeromeroruiz/proyectodawmean#readme",
   "dependencies": {
+    "bootstrap": "^4.3.1",
+    "cors": "^2.8.5",
+    "ejs": "^2.6.1",
     "express": "^4.17.1",
+    "express-formidable": "^1.2.0",
+    "font-awesome": "^4.7.0",
     "mongoose": "^5.5.12",
-    "morgan": "^1.9.1"
+    "morgan": "^1.9.1",
+    "multer": "^1.4.1"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.800.1",
+    "@angular-devkit/build-angular": "^0.800.2",
+    "@types/jquery": "^3.3.29",
     "nodemon": "^1.19.1"
   }
 }

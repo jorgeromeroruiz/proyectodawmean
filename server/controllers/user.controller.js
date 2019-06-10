@@ -9,6 +9,7 @@ userController.getUsers = async (req, res) => {
 
 userController.createUser = async (req, res) => {
     const user = new User(req.body);
+    console.log(user)
     await user.save();
     res.json({
         status: "Usuario creado"
