@@ -15,7 +15,7 @@ itemController.createitem = async (req, res) => {
         description:req.body.description,
         photo:req.body.photo
     });
-    console.log(item);
+   
     await item.save();
     res.json({
         status: "Item creado"
