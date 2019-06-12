@@ -1,0 +1,39 @@
+//Small devices, tablets
+@media (min-width: 768px){    
+    .small-devices-card{
+        display: block;
+    }    
+    .big-devices-card{
+        display: none;
+    }
+}
+//Medium devices
+@media (min-width: 1024px){    
+    .small-devices-card{
+        display: none;
+    }    
+    .big-devices-card{
+        display: block;
+    }   
+}
+
+.card-img-top{
+    max-height: 200px;
+    width: 100%;
+    top: -500px;
+}
+
+
+.box{
+    width: auto;
+    height: 280px;
+}
+.box img{
+    width: 100%;     
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+}
+.card-title{
+    font-weight: bold;
+}
