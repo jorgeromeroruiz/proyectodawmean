@@ -2,8 +2,12 @@ const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 const app = express();
+<<<<<<< HEAD
 const multer = require('multer');
 const path  = require('path')
+=======
+//aaaa
+>>>>>>> master
 const { mongoose } = require('./database');
 
 // Settings
