@@ -5,3 +5,4 @@ npm install nodemon
 npm install --save-dev @types/jquery
 npm install bootstrap
 npm install font-awesome
+npm install moment-timezone

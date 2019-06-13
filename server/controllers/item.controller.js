@@ -13,9 +13,12 @@ itemController.createitem = async (req, res) => {
         title:req.body.title,
         category: req.body.category,
         description:req.body.description,
-        photo:req.body.photo
+        photo:req.body.photo,
+        date:req.body.date
     });
-   
+    var dateCreated = item.date.getFullYear()+"_"+item.date.getMonth()+1+"_"+item.date.getDate()+"_"+item.date.getHours()+"_"+item.date.getMinutes()+"_"+item.date.getSeconds();
+   console.log(dateCreated);
+    
     await item.save();
     res.json({
         status: "Item creado"
