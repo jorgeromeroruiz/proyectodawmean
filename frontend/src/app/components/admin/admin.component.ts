@@ -7,9 +7,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-  constructor() { }
+  userList: Boolean;
+  itemList: Boolean;
+  constructor() {
+  }
 
   ngOnInit() {
+    //TODO si no es admin pa fuera
+    this.userList = false;
+    this.itemList = false;
+  }
+
+  loadUsers(){
+    this.itemList = false;
+    this.userList = true;
+  }
+
+  loadItems(){
+    this.userList = false;
+    this.itemList = true;
+
   }
 
 }

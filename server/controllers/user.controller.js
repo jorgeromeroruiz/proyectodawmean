@@ -27,7 +27,8 @@ userController.loginUser = async (req, res) => {
             name: user.name,
             surname: user.surname,
             email: user.email,
-            phone: user.phone
+            phone: user.phone,
+            admin: user.admin
         });
     } else {
         res.json({error: "0"});
@@ -50,7 +51,11 @@ userController.createUser = async (req, res) => {
 
 userController.getUser = async (req, res) => {
     const user = await User.findById(req.params.id);
-    res.json(user);
+    if (user !== null){
+        res.json(user);
+    } else {
+        res.json({status: "0"});
+    }
 }
 
 userController.editUser = async (req, res) => {
@@ -62,7 +67,7 @@ userController.editUser = async (req, res) => {
         phone: req.body.phone
     };
     await User.findByIdAndUpdate(id, {$set: user}, {new: true});
-    res.json({status: "Usuario actualizado"});
+    res.json({status: "1"});
 }
 
 userController.deleteUser = async (req, res) =>{

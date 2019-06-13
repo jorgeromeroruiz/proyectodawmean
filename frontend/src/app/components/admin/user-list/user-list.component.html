@@ -1,0 +1,86 @@
+<div class="col-md-12 text-center mb-2">
+  <button class="btn btn-outline-primary mr-1" (click)="createForm()">CREAR</button>
+  <button class="btn btn-outline-primary ml-1" (click)="updateForm()">MODIFICAR</button>
+</div>
+<div *ngIf="showAlert" class="col-md-3">
+  <div class="alert alert-danger">
+    <strong>Email ya en uso</strong>
+  </div>
+</div>
+<div *ngIf="updateOk" class="col-md-3">
+  <div class="alert alert-success">
+    <strong>Usuario actualizado</strong>
+  </div>
+</div>
+<div *ngIf="updateErr" class="col-md-3">
+  <div class="alert alert-warning">
+    <strong>Error al actualizar</strong>
+  </div>
+</div>
+<div class="col-md-12 mb-2">
+  <form class="text-center" *ngIf="createBtn" [formGroup]="formCreate" (ngSubmit)="addOrEdit()">
+    <div class="form-group">
+      <label for="nombre"></label>
+      <input type="text" class="form-control" formControlName="name" id="nombre" placeholder="Nombre">
+    </div>
+    <div class="form-group">
+      <label for="apellidos"></label>
+      <input type="text" class="form-control" formControlName="surname" id="apellidos" placeholder="Apellidos">
+    </div>
+    <div class="form-group">
+      <label for="email"></label>
+      <input type="text" class="form-control" formControlName="email" id="email" placeholder="Email">
+    </div>
+    <div class="form-group">
+      <label for="telefono"></label>
+      <input type="number" class="form-control" formControlName="phone" id="telefono" placeholder="Telefono">
+    </div>
+    <div class="form-group">
+      <label for="pwd"></label>
+      <input type="password" class="form-control" formControlName="pwd" id="pwd" placeholder="Contraseña">
+    </div>
+    <button type="submit" class="btn btn-primary mt-2">Crear</button>
+  </form>
+
+  <form class="text-center" *ngIf="updateBtn" (ngSubmit)="addOrEdit()">
+    <div class="form-group">
+      <label for="nombre"></label>
+      <input type="text" class="form-control" [(ngModel)]="selectedUser.name" name="nombre" id="nombre" placeholder="Nombre">
+    </div>
+    <div class="form-group">
+      <label for="apellidos"></label>
+      <input type="text" class="form-control" [(ngModel)]="selectedUser.surname" name="apellidos" id="apellidos" placeholder="Apellidos">
+    </div>
+    <div class="form-group">
+      <label for="email"></label>
+      <input type="text" class="form-control" [(ngModel)]="selectedUser.email" name="email" id="email" placeholder="Email">
+    </div>
+    <div class="form-group">
+      <label for="telefono"></label>
+      <input type="number" class="form-control" [(ngModel)]="selectedUser.phone" name="telefono" id="telefono" placeholder="Telefono">
+    </div>
+    <button type="submit" class="btn btn-primary mt-2">Actualizar</button>
+  </form>
+</div>
+<div class="col-md-12">
+  <table class="table">
+    <thead>
+      <tr>
+        <td>Nombre</td>
+        <td>Apellidos</td>
+        <td>Email</td>
+        <td>Teléfono</td>
+        <td>Acción</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of userArray" (click)="openForEdit(user)" [class.odd]="user==selectedUser">
+        <td>{{user.name}}</td>
+        <td>{{user.surname}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.phone}}</td>
+        <td><i class="fas fa-trash" (click)="delete(user._id)"></i></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

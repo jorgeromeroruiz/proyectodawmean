@@ -14,6 +14,8 @@ import { SignupComponent } from './components/signup/signup.component';
 
 import { AuthService } from "./services/auth.service";
 import {HttpClientModule} from "@angular/common/http";
+import { UserListComponent } from './components/admin/user-list/user-list.component';
+import { ItemListComponent } from './components/admin/item-list/item-list.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import {HttpClientModule} from "@angular/common/http";
     UsersComponent,
     AdminComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    UserListComponent,
+    ItemListComponent
   ],
   imports: [
     BrowserModule,
