@@ -9,4 +9,8 @@ router.get('/:id', userController.getUser);
 router.put('/:id', userController.editUser);
 router.delete('/:id', userController.deleteUser);
 
+router.post('/signup', userController.signupUser);
+router.post('/login', userController.loginUser);
+
+
 module.exports = router;

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from "../../services/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -7,16 +9,19 @@ import { Component, OnInit } from '@angular/core';
   styles: []
 })
 export class HeaderComponent implements OnInit {
-  appTitle: String = 'ProyectoDAW';
-  constructor() { }
+  appTitle: String = 'NeedU';
+  accessToken: String = '';
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
+    this.accessToken = this.authService.getToken();
   }
 
+  logOut(){
+    this.authService.logOut();
+    location.reload();
+    this.router.navigate(['/']);
+  }
 
-  status: boolean = false;
-clickEvent(){
-    this.status = !this.status;       
-}
 }
 

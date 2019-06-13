@@ -1,0 +1,30 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <i class="fas fa-users"></i>
+    </div>
+    <div *ngIf="showAlert" class="col-md-3 mb-2">
+      <div class="alert alert-danger">
+        <strong>Email ya en uso</strong>
+      </div>
+    </div>
+    <!-- Login Form -->
+    <form novalidate [formGroup]="formSignup" (ngSubmit)="onSubmit()">
+      <input type="text" id="name" class="fadeIn second" formControlName="name" placeholder="Nombre">
+      <input type="text" id="surname" class="fadeIn second" formControlName="surname" placeholder="Apellidos">
+      <input type="text" id="email" class="fadeIn second" formControlName="email" placeholder="Email">
+      <input type="number" id="phone" class="fadeIn second" formControlName="phone" placeholder="Telefono">
+      <input type="password" id="pwd" class="fadeIn third" formControlName="pwd" placeholder="Password">
+      <input type="submit" class="fadeIn fourth" value="Sign Up">
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" routerLink="/login">¿Ya estas registrado? Inicia sesión</a>
+    </div>
+
+  </div>
+</div>
