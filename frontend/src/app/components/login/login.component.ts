@@ -33,16 +33,19 @@ export class LoginComponent implements OnInit {
       email: this.formLogin.get('email').value,
       pwd: this.formLogin.get('pwd').value
     };
+
     this.authService.logIn(user).subscribe(data => {
-      if (data.error === '0'){
+      JSON.stringify(data);
+      if (data['error'] === '0'){
         this.showAlert = true;
       } else {
         this.authService.setUser(data);
-        let token = data._id;
+        let token = data['_id'];
         this.authService.setToken(token);
         location.reload();
         this.router.navigate(['/']);
       }
     });
+
   }
 }

@@ -37,14 +37,16 @@ export class SignupComponent implements OnInit {
       phone: this.formSignup.get('phone').value,
       pwd: this.formSignup.get('pwd').value
     };
+
     this.authService.signUp(user).subscribe(data => {
-      if (typeof data.status === 'undefined'){
+      JSON.stringify(data);
+      if (typeof data['status'] === 'undefined'){
         this.authService.setUser(data);
-        let token = data._id;
+        let token = data['_id'];
         this.authService.setToken(token);
         location.reload();
         this.router.navigate(['/home']);
-      } else if (data.status.code === 11000){
+      } else if (data['status']['code'] === 11000){
         this.showAlert = true;
       }
     });
