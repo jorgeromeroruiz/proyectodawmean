@@ -23,6 +23,7 @@
     "cors": "^2.8.5",
     "ejs": "^2.6.1",
     "express": "^4.17.1",
+    "express-form-data": "^2.0.8",
     "express-formidable": "^1.2.0",
     "font-awesome": "^4.7.0",
     "moment-timezone": "^0.5.25",

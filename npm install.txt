@@ -6,3 +6,8 @@ npm install --save-dev @types/jquery
 npm install bootstrap
 npm install font-awesome
 npm install moment-timezone
+
+npm install --save express-formidable
+npm install --save express-form-data
+
+npm install --save multer

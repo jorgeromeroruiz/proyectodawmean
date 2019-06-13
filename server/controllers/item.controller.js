@@ -7,8 +7,17 @@ itemController.getitems = async (req, res) => {
     res.json(items);
 }
 
+/* Subida con multer
+const express = require('express');
+const multer = require('multer');
+const app = express();
+app.use(multer({
+    dest: '././frontend/src/assets/uploads/images' 
+}).single('photo'));
+*/
+
 itemController.createitem = async (req, res) => {
-    console.log(req.photo);
+    console.log(req.files.photo);
     const item = new Item({
         title:req.body.title,
         category: req.body.category,
@@ -17,7 +26,7 @@ itemController.createitem = async (req, res) => {
         date:req.body.date
     });
     var dateCreated = item.date.getFullYear()+"_"+item.date.getMonth()+1+"_"+item.date.getDate()+"_"+item.date.getHours()+"_"+item.date.getMinutes()+"_"+item.date.getSeconds();
-   console.log(dateCreated);
+    console.log(dateCreated);
     
     await item.save();
     res.json({
