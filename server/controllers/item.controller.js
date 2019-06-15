@@ -3,7 +3,7 @@ const Item = require('../models/item');
 const itemController = {};
 
 itemController.getItems = async (req, res) => {
-    const items = await Item.find();
+    const items = await Item.find().sort({date: 'desc'});
     res.json(items);
 }
 
