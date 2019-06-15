@@ -11,10 +11,13 @@ import {Router} from "@angular/router";
 export class HeaderComponent implements OnInit {
   appTitle: String = 'NeedU';
   accessToken: String = '';
+  //admin: Boolean;
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.accessToken = this.authService.getToken();
+    //this.admin = false;
+    //this.chkAdmin();
   }
 
   logOut(){
@@ -22,6 +25,19 @@ export class HeaderComponent implements OnInit {
     location.reload();
     this.router.navigate(['/']);
   }
+
+  /*
+  chkAdmin(){
+    let token =  JSON.parse(this.authService.getCurrentUser());
+    token = JSON.parse(token);
+    console.log(token['admin']);
+    if (token['admin'] === 1){
+      this.admin = true;
+    } else {
+      this.admin = false;
+    }
+  }
+  */
 
 }
 

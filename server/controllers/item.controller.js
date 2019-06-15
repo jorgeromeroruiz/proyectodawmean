@@ -14,15 +14,14 @@ itemController.createItem = async (req, res) => {
         category: req.body.category,
         description:req.body.description,
         photo:req.body.photo,
-        date:req.body.date
+        date:req.body.date,
+        owner:req.body.owner
     });
     var dateCreated = item.date.getFullYear()+"_"+item.date.getMonth()+1+"_"+item.date.getDate()+"_"+item.date.getHours()+"_"+item.date.getMinutes()+"_"+item.date.getSeconds();
     console.log(dateCreated);
 
     await item.save();
-    res.json({
-        status: "Item creado"
-    });
+    res.json({item});
 }
 
 itemController.getItem = async (req, res) => {
@@ -30,17 +29,25 @@ itemController.getItem = async (req, res) => {
     res.json(item);
 }
 
-//TODO
 itemController.editItem = async (req, res) => {
     const { id } = req.params;
     const item = {
-        name: req.body.name,
-        surname: req.body.surname,
-        email: req.body.email,
-        phone: req.body.phone
+        title: req.body.title,
+        category: req.body.category,
+        description: req.body.description,
+        photo: req.body.photo
     };
     await Item.findByIdAndUpdate(id, {$set: item}, {new: true});
-    res.json({status: "Item actualizado"});
+    res.json({status: "1"});
+}
+
+itemController.myItems = async (req, res) =>{
+    const item = await Item.find({owner: req.params.id});
+    if (item !== null){
+        res.json({item});
+    } else {
+        res.json({error: "0"});
+    }
 }
 
 itemController.deleteItem = async (req, res) =>{

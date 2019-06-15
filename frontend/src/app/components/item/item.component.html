@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="row text-center">
+    <div class="col-md-6">
+      <form novalidate [formGroup]="formCreate" (ngSubmit)="addItem()" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="title"></label>
+            <input class="form-control" type="text" id="title" formControlName="title" placeholder="Ingresa tu título" required>
+          </div>
+          <div class="form-group">
+            <label for="category"></label>
+            <select class="form-control" id="category" formControlName="category" required>
+              <option value="Albañilería">Albañilería</option>
+              <option value="Carpintería">Carpintería</option>
+              <option value="Cocina">Cocina</option>
+              <option value="Educación">Educación</option>
+              <option value="Electricidad">Electricidad</option>
+              <option value="Fontanería">Fontanería</option>
+              <option value="Imágen">Imágen</option>
+              <option value="Informática">Informática</option>
+              <option value="Limpieza">Limpieza</option>
+              <option value="Mecánica">Mecánica</option>
+              <option value="Pintura">Pintura</option>
+              <option value="Trabajodoméstico">Trabajo doméstico</option>
+              <option value="Transporte">Transporte</option>
+              <option value="Otros">Otros</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="description"></label>
+            <input class="form-control" type="text" id="description" formControlName="description" placeholder="Ingresa tu descripción" required>
+          </div>
+        <div class="form-group">
+          <label for="file-3"></label>
+          <input class="form-control-file" id="file-3" type="file" formControlName="photo" required>
+        </div>
+        <div class="form-group">
+          <button type="button" class="btn btn-danger mr-1" (click)="resetForm()">Limpiar</button>
+          <button class="btn btn-primary ml-1">Crear</button>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-6">
+      <table class="table table-responsive">
+        <thead>
+          <th>Título</th>
+          <th>Categoría</th>
+          <th>Descripción</th>
+          <th>Foto</th>
+          <th>Acción</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of itemArray">
+            <td>{{item.title}}</td>
+            <td>{{item.category}}</td>
+            <td>{{item.description}}</td>
+            <td><i class="fas fa-image"></i></td>
+            <td>
+              <i class="fas fa-trash" (click)="deleteItem(item._id)"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

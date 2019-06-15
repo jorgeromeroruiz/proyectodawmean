@@ -18,6 +18,8 @@
         <!--SI ESTA LOGUEADO MOSTRAR LOGOUT, SINO MOSTRAR LOGIN Y SIGNUP-->
         <a *ngIf="!accessToken" class="nav-link" routerLink="/signup">SignUp</a>
         <a *ngIf="!accessToken" class="nav-link" routerLink="/login">LogIn</a>
+        <a *ngIf="accessToken" class="nav-link" routerLink="/item">MyItems</a>
+        <a *ngIf="accessToken" class="nav-link" routerLink="/admin">CPanel</a>
         <a *ngIf="accessToken" class="nav-link" (click)="logOut()">LogOut</a>
       </li>
     </ul>

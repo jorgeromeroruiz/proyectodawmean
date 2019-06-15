@@ -21,6 +21,7 @@ app.use(function (req, res, next) {
 });
 
 // Routes
+app.use('/api/items',require('./routes/item.routes'));
 app.use('/api/users',require('./routes/user.routes'));
 
 // Strating the server

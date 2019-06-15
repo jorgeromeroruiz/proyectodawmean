@@ -16,6 +16,7 @@ import { AuthService } from "./services/auth.service";
 import {HttpClientModule} from "@angular/common/http";
 import { UserListComponent } from './components/admin/user-list/user-list.component';
 import { ItemListComponent } from './components/admin/item-list/item-list.component';
+import { ItemComponent } from './components/item/item.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ItemListComponent } from './components/admin/item-list/item-list.compon
     LoginComponent,
     SignupComponent,
     UserListComponent,
-    ItemListComponent
+    ItemListComponent,
+    ItemComponent
   ],
   imports: [
     BrowserModule,

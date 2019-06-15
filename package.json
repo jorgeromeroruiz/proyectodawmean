@@ -19,6 +19,7 @@
   "homepage": "https://github.com/jorgeromeroruiz/proyectodawmean#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "moment-timezone": "^0.5.25",
     "mongoose": "^5.5.12",
     "morgan": "^1.9.1"
   },

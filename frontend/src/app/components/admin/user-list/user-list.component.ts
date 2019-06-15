@@ -25,7 +25,7 @@ export class UserListComponent implements OnInit {
       name: new FormControl('',Validators.required),
       surname: new FormControl('',Validators.required),
       email: new FormControl('', [Validators.required,Validators.email]),
-      phone: new FormControl('', [Validators.required,Validators.email]),
+      phone: new FormControl('', Validators.required),
       pwd: new FormControl('',Validators.required)
     });
     this.updateBtn = false;
@@ -93,9 +93,11 @@ export class UserListComponent implements OnInit {
   }
 
   delete(id: String){
-    this.userService.delUser(id).subscribe(data => {
-      this.userArray = this.userArray.filter(x => x != this.selectedUser) as never;
-      this.selectedUser = new User();
-    });
+    if(confirm('¿Seguro que quieres eliminarlo?')){
+      this.userService.delUser(id).subscribe(data => {
+        this.userArray = this.userArray.filter(x => x != this.selectedUser) as never;
+        this.selectedUser = new User();
+      });
+    }
   }
 }
