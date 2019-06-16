@@ -12,20 +12,23 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav text-uppercase ml-auto">
-        <li *ngIf="!accessToken" class="nav-item">
-          <a class="nav-link" routerLink="/signup">SignUp</a>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/">Inicio</a>
         </li>
         <li *ngIf="!accessToken" class="nav-item">
-          <a class="nav-link" routerLink="/login">LogIn</a>
+          <a class="nav-link" routerLink="/signup">Registro</a>
+        </li>
+        <li *ngIf="!accessToken" class="nav-item">
+          <a class="nav-link" routerLink="/login">Iniciar Sesión</a>
         </li>
         <li *ngIf="accessToken" class="nav-item">
-          <a class="nav-link" routerLink="/item">MyItems</a>
+          <a class="nav-link" routerLink="/item">Mis Anuncios</a>
+        </li>
+        <li *ngIf="accessToken && admin" class="nav-item">
+          <a class="nav-link" href="./admin">CPanel</a>
         </li>
         <li *ngIf="accessToken" class="nav-item">
-          <a class="nav-link" routerLink="/admin">CPanel</a>
-        </li>
-        <li *ngIf="accessToken" class="nav-item">
-          <a class="nav-link" (click)="logOut()">LogOut</a>
+          <a class="nav-link" (click)="logOut()">Cerrar Sesión</a>
         </li>
       </ul>
     </div>

@@ -11,6 +11,7 @@ router.delete('/:id', userController.deleteUser);
 
 router.post('/signup', userController.signupUser);
 router.post('/login', userController.loginUser);
+router.get('/phone/:id', userController.phone);
 
 
 module.exports = router;

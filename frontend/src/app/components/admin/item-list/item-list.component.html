@@ -26,16 +26,16 @@
     <button type="submit" class="btn btn-primary mt-2">Actualizar</button>
   </form>
 </div>
-<div class="col-md-12">
+<div class="col-md-12 mt-2">
   <table class="table">
     <thead>
     <tr>
-      <td>Título</td>
-      <td>Categoría</td>
-      <td>Descripción</td>
-      <td>Foto</td>
-      <td>Fecha</td>
-      <td>Acción</td>
+      <th>Título</th>
+      <th>Categoría</th>
+      <th>Descripción</th>
+      <th>Foto</th>
+      <th>Fecha</th>
+      <th>Acción</th>
     </tr>
     </thead>
     <tbody>
@@ -43,10 +43,20 @@
       <td>{{item.title}}</td>
       <td>{{item.category}}</td>
       <td>{{item.description}}</td>
-      <td><i class="fas fa-image"></i></td>
-      <td>{{item.date}}</td>
+      <td><i class="fas fa-image" data-toggle="modal" data-target="#exampleModalCenter" (click)="mostrarImagen(item.photo)"></i></td>
+      <td>{{item.date.substring(0,10)}}</td>
       <td><i class="fas fa-trash" (click)="delete(item._id)"></i></td>
     </tr>
     </tbody>
   </table>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <img class="img-thumbnail card-img" [src]="'/assets/images/' + modalPhoto" alt="{{modalPhoto}}" />
+      </div>
+    </div>
+  </div>
 </div>

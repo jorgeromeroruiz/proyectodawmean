@@ -1,6 +1,6 @@
 <!--ITEMS LOGIN-->
 <div class="container" *ngIf="chkUser">
-  <div class="album py-5 bg-light">
+  <div class="album py-5">
     <div class="card-deck">
       <!-- ITEMS -->
       <div class="col-md-4 big-devices-card" *ngFor="let item of itemArray">
@@ -11,14 +11,11 @@
           <div class="card-body">
             <h5 class="card-title">{{item.title}}</h5>
             <h6 class="card-subtitle mb-2 text-muted">{{item.category}}</h6>
-            <p class="card-text">{{item.description}}</p>
+            <p class="card-text block-ellipsis">{{item.description}}</p>
             <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-outline-primary">
-                  View
-                </button>
-                <button type="button" class="btn btn-sm btn-outline-secondary">
-                  Chat
+                <button type="button" class="btn btn-sm btn-outline-primary mt-1" data-toggle="modal" data-target="#exampleModalCenter" (click)="rellenarModal(item)">
+                  Ver
                 </button>
               </div>
               <small class="text-muted">{{item.date.substring(0,10)}}</small>
@@ -31,3 +28,31 @@
   </div>
 </div>
 <!-- MODAL CON LA INFO DEL ITEM -->
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">{{modal.title}}-{{modal.category}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <img class="img-thumbnail card-img" [src]="'/assets/images/' + modal.photo" alt="{{modal.title}}" />
+        <hr>
+        <p class="text-muted text-justify text-modal">{{modal.description}}</p>
+        <hr>
+        <h6>Información de contacto</h6>
+        <ul class="list-group text-modal">
+          <li class="list-group-item">Nombre: {{modal.fullname}}</li>
+          <li class="list-group-item">Email: {{modal.email}}</li>
+          <li class="list-group-item">Telefono: {{modal.phone}}</li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>

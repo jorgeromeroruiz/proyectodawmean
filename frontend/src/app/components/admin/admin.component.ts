@@ -13,7 +13,6 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit() {
-    //TODO si no es admin pa fuera
     this.userList = false;
     this.itemList = false;
   }

@@ -23,4 +23,9 @@ export class UserService {
   delUser(id: String){
     return this.http.delete("http://localhost:3000/api/users/"+id);
   }
+
+  loadPhone(id: String){
+    console.log(id);
+    return this.http.get("http://localhost:3000/api/users/phone/"+id);
+  }
 }

@@ -13,12 +13,14 @@ export class ItemListComponent implements OnInit {
   selectedItem: Item = new Item();
   updateOk: Boolean;
   updateErr: Boolean;
+  modalPhoto: String;
   constructor(private itemService: ItemService) { }
 
   ngOnInit() {
     this.itemService.loadItems().subscribe(data => {
       this.itemArray = JSON.parse(JSON.stringify(data));
     });
+    this.modalPhoto = 'thumbnail.svg';
   }
 
   addOrEdit(){
@@ -41,6 +43,11 @@ export class ItemListComponent implements OnInit {
 
   openForEdit(item: Item){
     this.selectedItem = item;
+  }
+
+  mostrarImagen(photo: String){
+    this.modalPhoto = '';
+    this.modalPhoto = photo;
   }
 
 }

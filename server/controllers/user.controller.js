@@ -37,7 +37,7 @@ userController.loginUser = async (req, res) => {
 
 //CRUD
 userController.getUsers = async (req, res) => {
-    const users = await User.find();
+    const users = await User.find({admin: 0});
     res.json(users);
 }
 
@@ -73,6 +73,23 @@ userController.editUser = async (req, res) => {
 userController.deleteUser = async (req, res) =>{
     await User.findByIdAndRemove(req.params.id);
     res.json({status: "Usuario borrado"});
+}
+
+userController.phone = async (req, res) => {
+    const user = await User.findOne({_id: req.params.id});
+    if (user !== null){
+        res.json({
+            phone: user.phone,
+            fullname: user.name+' '+user.surname,
+            email: user.email
+        });
+    } else {
+        res.json({
+            phone: 'Tlf no disponible',
+            fullname: 'Nombre no disponible',
+            email: 'Email no disponible'
+        });
+    }
 }
 
 module.exports = userController;
