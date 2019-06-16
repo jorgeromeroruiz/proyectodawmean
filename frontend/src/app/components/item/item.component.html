@@ -27,12 +27,13 @@
           </div>
           <div class="form-group">
             <label for="description"></label>
-            <input class="form-control" type="text" id="description" formControlName="description" placeholder="Ingresa tu descripción" required>
+            <textarea class="form-control rounded-0" id="description" formControlName="description" placeholder="Ingresa tu descripción" required rows="5"></textarea>
           </div>
         <div class="form-group">
           <label for="file-3"></label>
-          <input class="form-control-file" id="file-3" type="file" formControlName="photo" required>
+          <input class="form-control-file" id="file-3" type="file" name="photo" formControlName="photo" (change)="onFileSelected($event)" required>
         </div>
+
         <div class="form-group">
           <button type="button" class="btn btn-danger mr-1" (click)="resetForm()">Limpiar</button>
           <button class="btn btn-primary ml-1">Crear</button>
@@ -45,14 +46,14 @@
           <th>Título</th>
           <th>Categoría</th>
           <th>Descripción</th>
-          <th>Foto</th>
-          <th>Acción</th>
+          <th>Ver</th>
+          <th>Borrar</th>
         </thead>
         <tbody>
           <tr *ngFor="let item of itemArray">
-            <td>{{item.title}}</td>
+            <td style="max-width: 100px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{item.title}}</td>
             <td>{{item.category}}</td>
-            <td>{{item.description}}</td>
+            <td style="max-width: 100px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{item.description}}</td>
             <td><i class="fas fa-image"></i></td>
             <td>
               <i class="fas fa-trash" (click)="deleteItem(item._id)"></i>

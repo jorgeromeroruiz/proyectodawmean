@@ -17,6 +17,12 @@ export class ItemService {
     return this.http.get("http://localhost:3000/api/items/own/"+token);
   }
 
+  uploadImage(image){
+    const fd = new FormData();
+    fd.append('photo', image, image.name);
+    return this.http.post('http://localhost:3000/api/items/img',fd);
+  }
+
   saveItem(item){
     return this.http.post("http://localhost:3000/api/items",item);
   }

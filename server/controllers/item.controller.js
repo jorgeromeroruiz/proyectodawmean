@@ -1,6 +1,17 @@
 const Item = require('../models/item');
-
+const multer = require('multer');
 const itemController = {};
+
+let storage  = multer.diskStorage({
+    destination: function(req, file, cb){
+        cb(null, 'frontend/src/assets/images')
+    },
+    filename: function(req, file, cb){
+        cb(null, file.fieldname+'-'+Date.now()+'.jpg')
+    }
+});
+
+let upload = multer({ storage: storage }).single('photo');
 
 itemController.getItems = async (req, res) => {
     const items = await Item.find().sort({date: 'desc'});
@@ -8,7 +19,7 @@ itemController.getItems = async (req, res) => {
 }
 
 itemController.createItem = async (req, res) => {
-    console.log(req.photo);
+
     const item = new Item({
         title:req.body.title,
         category: req.body.category,
@@ -53,6 +64,18 @@ itemController.myItems = async (req, res) =>{
 itemController.deleteItem = async (req, res) =>{
     await Item.findByIdAndRemove(req.params.id);
     res.json({status: "Item borrado"});
+}
+
+itemController.imgItem = async (req, res) => {
+    upload(req, res, function (err) {
+        if (err){
+            //Error en la subida
+            res.json({err});
+        } else {
+            res.json({status: "Imagen subida", path: req.file.filename});
+        }
+    });
+
 }
 
 module.exports = itemController;

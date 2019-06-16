@@ -9,5 +9,6 @@ router.get('/:id', itemController.getItem);
 router.put('/:id', itemController.editItem);
 router.delete('/:id', itemController.deleteItem);
 router.get('/own/:id', itemController.myItems);
+router.post('/img', itemController.imgItem);
 
 module.exports = router;
