@@ -17,10 +17,10 @@ export class SignupComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder){
     this.formSignup = formBuilder.group({
       name: ['',[Validators.required,Validators.pattern('^[a-zA-Zñáéíóú-]{2,20}$')]],
-      surname: ['',[Validators.required]],
-      email: ['',[Validators.required, Validators.email]],
+      surname: ['',[Validators.required, Validators.pattern('^[a-zA-Zñáéíóú-]{2,20}$')]],
+      email: ['',[Validators.required, Validators.pattern('^[a-z_0-9](\.?[a-z-_0-9]){2,40}@[a-z-_0-9]{2,20}.[a-zñáéíóúü]{2,5}$')]],
       phone: ['',[Validators.required,Validators.pattern('[6-9][0-9]{8}')]],
-      pwd: ['',[Validators.required,Validators.minLength(6)]],
+      pwd: ['',[Validators.required,Validators.pattern('^[a-zA-Z0-9]{8,20}$')]],
       admin: 0
     });
   }

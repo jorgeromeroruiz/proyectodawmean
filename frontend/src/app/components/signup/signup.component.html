@@ -1,32 +1,47 @@
 <div class="container mt-tope">
   <div class="wrapper fadeInDown">
-  <div id="formContent">
-    <!-- Tabs Titles -->
+    <div id="formContent">
+      <!-- Tabs Titles -->
 
-    <!-- Icon -->
-    <div class="fadeIn first">
-      <i class="fas fa-users"></i>
-    </div>
-    <div *ngIf="showAlert" class="col-md-3 mb-2">
-      <div class="alert alert-danger">
-        <strong>Email ya en uso</strong>
+      <!-- Icon -->
+      <div class="fadeIn first">
+        <i class="fas fa-users"></i>
       </div>
-    </div>
-    <!-- Login Form -->
-    <form [formGroup]="formSignup" (ngSubmit)="onSubmit()" novalidate>
-      <input type="text" id="name" class="fadeIn second" formControlName="name" name="name" placeholder="Nombre">
-      <input type="text" id="surname" class="fadeIn second" formControlName="surname" name="surname" placeholder="Apellidos">
-      <input type="text" id="email" class="fadeIn second" formControlName="email" name="email" placeholder="Email">
-      <input type="text" id="phone" class="fadeIn second" formControlName="phone" name="phone" placeholder="Telefono">
-      <input type="password" id="pwd" class="fadeIn third" formControlName="pwd" name="pwd" placeholder="Password">
-      <input type="submit" class="fadeIn fourth" value="Sign Up">
-    </form>
+      <div *ngIf="showAlert" class="col-md-3 mb-2">
+        <div class="alert alert-danger">
+          <strong>Email ya en uso</strong>
+        </div>
+      </div>
+      <!-- Login Form -->
+      <form [formGroup]="formSignup" (ngSubmit)="onSubmit()" novalidate>
+        <input type="text" id="name" class="fadeIn second" formControlName="name" name="name" placeholder="Nombre">
+        <div *ngIf="((formSignup.controls['name'].touched) && (formSignup.controls['name'].hasError('pattern')))">
+          <p>El nombre debe contener entre 2 y 15 caracteres</p>
+        </div>
+        <input type="text" id="surname" class="fadeIn second" formControlName="surname" name="surname" placeholder="Apellidos">
+        <div *ngIf="((formSignup.controls['surname'].touched) && (formSignup.controls['surname'].hasError('pattern')))">
+          <p>El apellido debe contener entre 2 y 20 caracteres</p>
+        </div>
+        <input type="text" id="email" class="fadeIn second" formControlName="email" name="email" placeholder="Email">
+        <div *ngIf="((formSignup.controls['email'].touched) && (formSignup.controls['email'].hasError('pattern')))">
+          <p>Introduce un e-mail válido</p>
+        </div>
+        <input type="text" id="phone" class="fadeIn second" formControlName="phone" name="phone" placeholder="Telefono">
+        <div *ngIf="((formSignup.controls['phone'].touched) && (formSignup.controls['phone'].hasError('pattern')))">
+          <p>Introduce un número de teléfono válido</p>
+        </div>
+        <input type="password" id="pwd" class="fadeIn third" formControlName="pwd" name="pwd" placeholder="Password">
+        <div *ngIf="((formSignup.controls['pwd'].touched) && (formSignup.controls['pwd'].hasError('pattern')))">
+          <p>La contraseña debe contener al menos 8 caracteres.</p>
+        </div>
+        <input type="submit" class="fadeIn fourth" value="Sign Up">
+      </form>
 
-    <!-- Remind Passowrd -->
-    <div id="formFooter">
-      <a class="underlineHover" routerLink="/login">¿Ya estas registrado? Inicia sesión</a>
-    </div>
+      <!-- Remind Passowrd -->
+      <div id="formFooter">
+        <a class="underlineHover" routerLink="/login">¿Ya estas registrado? Inicia sesión</a>
+      </div>
 
+    </div>
   </div>
-</div>
 </div>
