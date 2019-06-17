@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormControl, Validators, FormBuilder} from "@angular/forms";
 import { AuthService } from "../../services/auth.service";
 import { Router } from "@angular/router";
+import {User} from "../../models/user";
 
 @Component({
   selector: 'app-signup',
@@ -12,14 +13,15 @@ export class SignupComponent implements OnInit {
 
   formSignup;
   showAlert: Boolean;
-
+  user: User;
   constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder){
     this.formSignup = formBuilder.group({
-      name: ['',[Validators.required,Validators.pattern('/^[0-9]*$')]],
-      surname: ['',[Validators.required,Validators.pattern('/^[0-9]*$')]],
+      name: ['',[Validators.required,Validators.pattern('^[a-zA-Zñáéíóú-]{2,20}$')]],
+      surname: ['',[Validators.required]],
       email: ['',[Validators.required, Validators.email]],
-      phone: ['',[Validators.required,Validators.pattern('/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$')]],
+      phone: ['',[Validators.required,Validators.pattern('[6-9][0-9]{8}')]],
       pwd: ['',[Validators.required,Validators.minLength(6)]],
+      admin: 0
     });
   }
 
@@ -54,6 +56,7 @@ export class SignupComponent implements OnInit {
       });
     } else {
       alert('Rellene todos los campos correctamente');
+      console.log(this.formSignup)
     }
 
   }
