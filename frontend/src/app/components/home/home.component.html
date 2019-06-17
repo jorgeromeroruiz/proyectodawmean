@@ -1,3 +1,23 @@
+<!-- Header -->
+<header class="masthead">
+    <div id="slider">
+        <figure>
+            <img src="/assets/img/bg.png" alt="welcome">
+            <img src="/assets/img/summer.png" alt="summer">
+            <img src="/assets/img/bg.png" alt="welcome">
+            <img src="/assets/img/summer.png" alt="summer">
+        </figure>
+    </div>
+</header>
+
+<div class="container" *ngIf="!chkUser">
+  <div class="row text-center">
+    <div class="col-md-12">
+      <h2 class="text-capitalize">si quieres ver los anuncios</h2>
+      <h1 class="text-capitalize" routerLink="login">Inicia sesión</h1>
+    </div>
+  </div>
+</div>
 <!--ITEMS LOGIN-->
 <div class="container" *ngIf="chkUser">
   <div class="album py-5">

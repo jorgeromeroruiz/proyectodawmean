@@ -1,4 +1,5 @@
-<div class="wrapper fadeInDown">
+<div class="container mt-tope">
+  <div class="wrapper fadeInDown">
   <div id="formContent">
     <!-- Tabs Titles -->
 
@@ -12,12 +13,12 @@
       </div>
     </div>
     <!-- Login Form -->
-    <form novalidate [formGroup]="formSignup" (ngSubmit)="onSubmit()">
-      <input type="text" id="name" class="fadeIn second" formControlName="name" placeholder="Nombre">
-      <input type="text" id="surname" class="fadeIn second" formControlName="surname" placeholder="Apellidos">
-      <input type="text" id="email" class="fadeIn second" formControlName="email" placeholder="Email">
-      <input type="text" id="phone" class="fadeIn second" formControlName="phone" placeholder="Telefono">
-      <input type="password" id="pwd" class="fadeIn third" formControlName="pwd" placeholder="Password">
+    <form [formGroup]="formSignup" (ngSubmit)="onSubmit()" novalidate>
+      <input type="text" id="name" class="fadeIn second" formControlName="name" name="name" placeholder="Nombre">
+      <input type="text" id="surname" class="fadeIn second" formControlName="surname" name="surname" placeholder="Apellidos">
+      <input type="text" id="email" class="fadeIn second" formControlName="email" name="email" placeholder="Email">
+      <input type="text" id="phone" class="fadeIn second" formControlName="phone" name="phone" placeholder="Telefono">
+      <input type="password" id="pwd" class="fadeIn third" formControlName="pwd" name="pwd" placeholder="Password">
       <input type="submit" class="fadeIn fourth" value="Sign Up">
     </form>
 
@@ -27,4 +28,5 @@
     </div>
 
   </div>
+</div>
 </div>

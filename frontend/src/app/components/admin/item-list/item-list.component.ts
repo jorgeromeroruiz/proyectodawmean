@@ -50,4 +50,13 @@ export class ItemListComponent implements OnInit {
     this.modalPhoto = photo;
   }
 
+  delete(id: String){
+    if(confirm('¿Seguro que quieres eliminarlo?')){
+      this.itemService.delItem(id).subscribe(data => {
+        this.itemArray = this.itemArray.filter(x => x != this.selectedItem) as never;
+        this.selectedItem = new Item();
+      });
+    }
+  }
+
 }

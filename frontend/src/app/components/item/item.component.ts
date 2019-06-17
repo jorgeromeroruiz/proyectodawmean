@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ItemService} from "../../services/item.service";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {User} from "../../models/user";
-import {Item} from "../../models/item";
+import {FormBuilder, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-item',
@@ -13,20 +11,21 @@ import {Item} from "../../models/item";
 export class ItemComponent implements OnInit {
 
   itemArray: [];
-  formCreate: FormGroup;
+  formCreate;
   selectedFile: File = null;
   pathImg: String;
   modal = [];
-  constructor(private itemService: ItemService) { }
+  constructor(private itemService: ItemService, private formBuilder: FormBuilder) {
+    this.formCreate = formBuilder.group({
+      title: ['',Validators.required],
+      category: ['',Validators.required],
+      description: ['',Validators.required],
+      photo: ['',Validators.required],
+    });
+  }
 
   ngOnInit() {
     this.cleanModal();
-    this.formCreate = new FormGroup({
-      title: new FormControl('',Validators.required),
-      category: new FormControl('',Validators.required),
-      description: new FormControl('', Validators.required),
-      photo: new FormControl('', Validators.required)
-    });
     const token = localStorage.getItem('accessToken');
     this.itemService.loadMyItems(token).subscribe(data => {
       this.itemArray = JSON.parse(JSON.stringify(data))['item'];
@@ -47,19 +46,24 @@ export class ItemComponent implements OnInit {
   }
 
   addItem(){
-    const token = localStorage.getItem('accessToken');
-    const item = {
-      title: this.formCreate.get('title').value,
-      category: this.formCreate.get('category').value,
-      description: this.formCreate.get('description').value,
-      photo: this.pathImg,
-      owner: token
-    };
-    this.itemService.saveItem(item).subscribe(data => {
-      let array = {_id: item['_id'],title: item['title'],category: item['category'],description: item['description'], date: item['date'], owner: item['owner'], photo: item['photo']} as never;
-      this.itemArray.push(array);
-    });
-    location.reload();
+    if (this.formCreate.valid){
+      const token = localStorage.getItem('accessToken');
+      const item = {
+        title: this.formCreate.get('title').value,
+        category: this.formCreate.get('category').value,
+        description: this.formCreate.get('description').value,
+        photo: this.pathImg,
+        owner: token
+      };
+      this.itemService.saveItem(item).subscribe(data => {
+        let array = {_id: item['_id'],title: item['title'],category: item['category'],description: item['description'], date: item['date'], owner: item['owner'], photo: item['photo']} as never;
+        this.itemArray.push(array);
+      });
+      location.reload();
+    } else {
+      alert("Rellena todos los campos");
+    }
+
   }
 
   deleteItem(id: String){

@@ -1,27 +1,31 @@
-<div class="wrapper fadeInDown">
-  <div id="formContent">
-    <!-- Tabs Titles -->
+<div class="container mt-tope">
+  <div class="row">
+    <div class="wrapper fadeInDown">
+      <div id="formContent">
+        <!-- Tabs Titles -->
 
-    <!-- Icon -->
-    <div class="fadeIn first">
-      <i class="fas fa-users"></i>
-    </div>
-    <div *ngIf="showAlert" class="col-md-3 mb-2">
-      <div class="alert alert-danger">
-        <strong>Usuario incorrecto</strong>
+        <!-- Icon -->
+        <div class="fadeIn first">
+          <i class="fas fa-users"></i>
+        </div>
+        <div *ngIf="showAlert" class="col-md-3 mb-2">
+          <div class="alert alert-danger">
+            <strong>Usuario incorrecto</strong>
+          </div>
+        </div>
+        <!-- Login Form -->
+        <form novalidate [formGroup]="formLogin" (ngSubmit)="onSubmit()">
+          <input type="text" id="email" class="fadeIn second" formControlName="email" placeholder="Email">
+          <input type="password" id="pwd" class="fadeIn third" formControlName="pwd" placeholder="Password">
+          <input type="submit" class="fadeIn fourth" value="Log In">
+        </form>
+
+        <!-- Remind Passowrd -->
+        <div id="formFooter">
+          <a class="underlineHover" routerLink="/signup">¿Eres nuevo? Registrate</a>
+        </div>
+
       </div>
     </div>
-    <!-- Login Form -->
-    <form novalidate [formGroup]="formLogin" (ngSubmit)="onSubmit()">
-      <input type="text" id="email" class="fadeIn second" formControlName="email" placeholder="Email">
-      <input type="password" id="pwd" class="fadeIn third" formControlName="pwd" placeholder="Password">
-      <input type="submit" class="fadeIn fourth" value="Log In">
-    </form>
-
-    <!-- Remind Passowrd -->
-    <div id="formFooter">
-      <a class="underlineHover" routerLink="/signup">¿Eres nuevo? Registrate</a>
-    </div>
-
   </div>
 </div>

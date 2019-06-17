@@ -1,14 +1,21 @@
 <div class="container">
+  <div class="row">
+    <div *ngIf="formCreate.get('category').errors && formCreate.get('category').dirty" class="col-md-3">
+      <div class="alert alert-danger" *ngIf="formCreate.get('category').hasError('required')">
+        <strong>Seleccione una categoría</strong>
+      </div>
+    </div>
+  </div>
   <div class="row text-center">
     <div class="col-md-6">
-      <form novalidate [formGroup]="formCreate" (ngSubmit)="addItem()" enctype="multipart/form-data">
+      <form [formGroup]="formCreate" (ngSubmit)="addItem()" novalidate enctype="multipart/form-data">
           <div class="form-group">
             <label for="title"></label>
-            <input class="form-control" type="text" id="title" formControlName="title" placeholder="Ingresa tu título" required>
+            <input class="form-control" type="text" id="title" formControlName="title" placeholder="Ingresa tu título">
           </div>
           <div class="form-group">
             <label for="category"></label>
-            <select class="form-control" id="category" formControlName="category" required>
+            <select class="form-control" id="category" formControlName="category">
               <option value="Albañilería">Albañilería</option>
               <option value="Carpintería">Carpintería</option>
               <option value="Cocina">Cocina</option>
@@ -27,11 +34,11 @@
           </div>
           <div class="form-group">
             <label for="description"></label>
-            <textarea class="form-control rounded-0" id="description" formControlName="description" placeholder="Ingresa tu descripción" required rows="5"></textarea>
+            <textarea class="form-control rounded-0" id="description" formControlName="description" placeholder="Ingresa tu descripción" rows="5"></textarea>
           </div>
         <div class="form-group">
           <label for="file-3"></label>
-          <input class="form-control-file" id="file-3" type="file" name="photo" formControlName="photo" (change)="onFileSelected($event)" required>
+          <input class="form-control-file" id="file-3" type="file" name="photo" formControlName="photo" (change)="onFileSelected($event)">
         </div>
 
         <div class="form-group">

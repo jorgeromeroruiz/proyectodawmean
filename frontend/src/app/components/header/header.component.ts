@@ -33,7 +33,7 @@ export class HeaderComponent implements OnInit {
   chkAdmin(){
     let token =  JSON.parse(this.authService.getCurrentUser());
     token = JSON.parse(token);
-    if (token['admin'] === 1){
+    if (this.authService.getCurrentUser() && (token['admin'] === 1)){
       this.admin = true;
     } else {
       this.admin = false;
@@ -42,4 +42,3 @@ export class HeaderComponent implements OnInit {
 
 
 }
-

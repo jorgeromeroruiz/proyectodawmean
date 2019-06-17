@@ -13,7 +13,9 @@ export class HomeComponent implements OnInit {
   chkUser: Boolean;
   itemArray = [];
   modal = [];
-  constructor(private itemService: ItemService, private userService: UserService) { }
+  constructor(private itemService: ItemService, private userService: UserService) {
+    this.chkUser = false;
+  }
 
   ngOnInit() {
     this.chkUser = false;
@@ -27,9 +29,10 @@ export class HomeComponent implements OnInit {
   }
 
   chkLogin(){
-    let token = localStorage.getItem('accessToken');
-    if ((token !== '') || (typeof token !== 'undefined')){
+    if (localStorage.getItem('accessToken')){
       this.chkUser = true;
+    } else {
+      this.chkUser = false;
     }
   }
 
