@@ -16,9 +16,11 @@ export class ItemComponent implements OnInit {
   formCreate: FormGroup;
   selectedFile: File = null;
   pathImg: String;
+  modal = [];
   constructor(private itemService: ItemService) { }
 
   ngOnInit() {
+    this.cleanModal();
     this.formCreate = new FormGroup({
       title: new FormControl('',Validators.required),
       category: new FormControl('',Validators.required),
@@ -71,6 +73,26 @@ export class ItemComponent implements OnInit {
 
   resetForm(){
     this.formCreate.reset();
+  }
+
+  cleanModal(){
+    this.modal['title'] = '';
+    this.modal['category'] = '';
+    this.modal['description'] = '';
+    this.modal['date'] = '';
+    this.modal['photo'] = 'thumbnail.svg';
+    this.modal['phone'] = '';
+    this.modal['fullname'] = '';
+    this.modal['email'] = '';
+  }
+
+  rellenarModal(item){
+    this.cleanModal();
+    this.modal['title'] = item.title;
+    this.modal['category'] = item.category;
+    this.modal['description'] = item.description;
+    this.modal['date'] = item.date;
+    this.modal['photo'] = item.photo;
   }
 
 }

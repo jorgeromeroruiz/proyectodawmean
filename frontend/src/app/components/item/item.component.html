@@ -54,7 +54,7 @@
             <td style="max-width: 100px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{item.title}}</td>
             <td>{{item.category}}</td>
             <td style="max-width: 100px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{item.description}}</td>
-            <td><i class="fas fa-image"></i></td>
+            <td><i class="fas fa-image"  data-toggle="modal" data-target="#exampleModalCenter" (click)="rellenarModal(item)"></i></td>
             <td>
               <i class="fas fa-trash" (click)="deleteItem(item._id)"></i>
             </td>
@@ -64,3 +64,27 @@
     </div>
   </div>
 </div>
+<!-- MODAL CON LA INFO DEL ITEM -->
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">{{modal.title}}-{{modal.category}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <img class="img-thumbnail card-img" [src]="'/assets/images/' + modal.photo" alt="{{modal.title}}" />
+        <hr>
+        <h5 class="text-center">Información</h5>
+        <p class="text-muted text-justify text-modal">{{modal.description}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
