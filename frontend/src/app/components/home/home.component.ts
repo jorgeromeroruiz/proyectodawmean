@@ -22,7 +22,6 @@ export class HomeComponent implements OnInit {
     if (this.chkUser){
       this.itemService.loadItems().subscribe(data => {
         this.itemArray = JSON.parse(JSON.stringify(data));
-        console.log(this.itemArray);
       });
     }
   }
