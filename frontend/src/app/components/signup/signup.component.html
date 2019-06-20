@@ -15,10 +15,25 @@
     <!-- Login Form -->
     <form [formGroup]="formSignup" (ngSubmit)="onSubmit()" novalidate>
       <input type="text" id="name" class="fadeIn second" formControlName="name" name="name" placeholder="Nombre">
+      <div *ngIf="((formSignup.controls['name'].touched) && (formSignup.controls['name'].hasError('pattern')))"> 
+        <p>El nombre debe contener entre 2 y 15 caracteres</p>
+      </div>
       <input type="text" id="surname" class="fadeIn second" formControlName="surname" name="surname" placeholder="Apellidos">
+      <div *ngIf="((formSignup.controls['surname'].touched) && (formSignup.controls['surname'].hasError('pattern')))"> 
+        <p>El apellido debe contener entre 2 y 20 caracteres</p>
+      </div>
       <input type="text" id="email" class="fadeIn second" formControlName="email" name="email" placeholder="Email">
+      <div *ngIf="((formSignup.controls['email'].touched) && (formSignup.controls['email'].hasError('pattern')))"> 
+        <p>Introduce un e-mail válido</p>
+      </div>
       <input type="text" id="phone" class="fadeIn second" formControlName="phone" name="phone" placeholder="Telefono">
-      <input type="password" id="pwd" class="fadeIn third" formControlName="pwd" name="pwd" placeholder="Password">
+      <div *ngIf="((formSignup.controls['phone'].touched) && (formSignup.controls['phone'].hasError('pattern')))"> 
+        <p>Introduce un número de teléfono válido</p>
+      </div>
+      <input type="password" id="pwd" class="fadeIn third" formControlName="pwd" name="pwd" placeholder="Password">        
+      <div *ngIf="((formSignup.controls['pwd'].touched) && (formSignup.controls['pwd'].hasError('pattern')))"> 
+        <p>La contraseña debe contener al menos 8 caracteres.</p>
+      </div>
       <input type="submit" class="fadeIn fourth" value="Sign Up">
     </form>
 
